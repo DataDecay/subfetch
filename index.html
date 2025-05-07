@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Subdomain Reader</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .subdomain {
+      font-size: 2em;
+      margin-top: 1em;
+      color: #f44;
+    }
+  </style>
+</head>
+<body>
+  <h1>Subdomain:</h1>
+  <div class="subdomain" id="subdomain">Loading…</div>
+
+  <script>
+    fetch("http://65.19.154.73:9000/hooks/show-subdomain")
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('subdomain').textContent = data.subdomain || '(none)';
+      })
+      .catch(() => {
+        document.getElementById('subdomain').textContent = 'Error loading';
+      });
+  </script>
+</body>
+</html>
