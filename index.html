@@ -57,9 +57,9 @@
 <body>
   <h1>Subdomain:</h1>
   <div class="subdomain" id="subdomain">Loading…</div>
-  <p>This changes every week; progress will not save when it rotates. To get a perm link; enter the password and <span style="color:red;">DO NOT SHARE THE PERM LINK</span>.
+  <p>This changes every week; progress will not save when it rotates. To get a perm link; enter the password and <span style="color:red;">DO NOT SHARE YOUR PERM LINK</span>.
   <br />You can share this site though. These are to prevent the blocking of the site/your link. Once you are here; try to visit it not very much to ensure they don't see this site as active.
-  <br />There are 2 formats you can get: ##########.nevin.club or ##########.datadecay.dev for perm links, and roll-########.datadecay.dev or roll-########.nevin.club for rolling links.
+  <br />There are 2 formats you can get: ##########.nevin.club or ##########.datadecay.dev for perm links, and roll-########.datadecay.dev or roll-########.nevin.club for changing links.
   <br /><span style="color: lime; font-weight: bold;">100% Un-Addified TInf0il</span></p>
 
   <h2>Request Non-Rotating:</h2>
@@ -105,7 +105,7 @@
             if (responseSubdomain && responseSubdomain[1]) {
               const sub = responseSubdomain[1];
               document.getElementById('subdomain').innerHTML =
-                `<a href="https://${sub}" target="_blank" style="color: lime; font-weight: bold;" class="subdomain-link">${sub}</a>`;
+                `<a href="https://${sub}" target="_blank" style="color: #0ff; font-weight: bold;" class="subdomain-link">${sub}</a>`;
               document.getElementById("status").innerHTML =
                 `Updated subdomain, <h2 style="color:red;">BOOKMARK IT, YOU WILL NOT BE ABLE TO SEE THIS AGAIN</h2>`;
             } else {
