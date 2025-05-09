@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,6 +53,31 @@
       text-decoration: none;
       font-weight: bold;
     }
+    select {
+    padding: 10px;
+    margin-top: 1em;
+    font-size: 1em;
+    font-family: monospace;
+    background-color: #111;
+    color: #0f0;
+    border: 1px solid #0f0;
+    border-radius: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  select:focus {
+    outline: none;
+    border-color: #6f6;
+    box-shadow: 0 0 5px #6f6;
+  }
+
+  label {
+    margin-top: 1em;
+    font-size: 1em;
+    color: #0f0;
+  }
   </style>
 </head>
 <body>
@@ -60,11 +86,16 @@
   <p>This changes every week; progress will not save when it rotates. To get a perm link; enter the password and <span style="color:red;">DO NOT SHARE YOUR PERM LINK</span>.
   <br />You can share this site though. These are to prevent the blocking of the site/your link. Once you are here; try to visit it not very much to ensure they don't see this site as active.
   <br />There are 2 formats you can get: ##########.nevin.club or ##########.datadecay.dev for perm links, and roll-########.datadecay.dev or roll-########.nevin.club for changing links.
-  <br /><span style="color: lime; font-weight: bold;">100% Un-Addified TInf0il</span></p>
+  <br /><span style="color: lime; font-weight: bold;">99% Un-Addified TInf0il</span></p>
 
   <h2>Request Non-Rotating:</h2>
   <input type="password" id="passwordInput" placeholder="Enter the password">
-  
+  <label for="proxyType">Type:</label>
+<select id="proxyType">
+  <option value="tf">Tinf0il</option>
+  <option value="cl">Canlite</option>
+</select>
+
   <button id="sendRequestButton">Request</button>
 
   <div class="status" id="status"></div>
@@ -88,38 +119,39 @@
       });
 
     document.getElementById("sendRequestButton").addEventListener("click", () => {
-      const password = document.getElementById("passwordInput").value;
+  const password = document.getElementById("passwordInput").value;
+  const proxy = document.getElementById("proxyType").value;
 
-      if (!password) {
-        document.getElementById("status").textContent = "Please enter a password.";
-        return;
+  if (!password) {
+    document.getElementById("status").textContent = "Please enter a password.";
+    return;
+  }
+
+  fetch(`https://api.datadecay.dev/hooks/yummy-cheese?token=${encodeURIComponent(password)}&proxy=${encodeURIComponent(proxy)}`)
+    .then(response => response.text())
+    .then(data => {
+      if (data.includes("satisfied")) {
+        document.getElementById("status").textContent = "Incorrect password.";
+      } else if (data.includes("Subdomain")) {
+        const responseSubdomain = data.match(/Subdomain (.*?) added/);
+        if (responseSubdomain && responseSubdomain[1]) {
+          const sub = responseSubdomain[1];
+          document.getElementById('subdomain').innerHTML =
+            `<a href="https://${sub}" target="_blank" style="color: #0ff; font-weight: bold;" class="subdomain-link">${sub}</a>`;
+          document.getElementById("status").innerHTML =
+            `Updated subdomain, <h2 style="color:red;">BOOKMARK IT, YOU WILL NOT BE ABLE TO SEE THIS AGAIN</h2>`;
+        } else {
+          document.getElementById("status").textContent = "Unexpected response format.";
+        }
+      } else {
+        document.getElementById("status").textContent = data;
       }
-
-      fetch(`https://api.datadecay.dev/hooks/yummy-cheese?token=${password}`)
-        .then(response => response.text())
-        .then(data => {
-          if (data.includes("satisfied")) {
-            document.getElementById("status").textContent = "Incorrect password.";
-          } else if (data.includes("Subdomain")) {
-            const responseSubdomain = data.match(/Subdomain (.*?) added/);
-            if (responseSubdomain && responseSubdomain[1]) {
-              const sub = responseSubdomain[1];
-              document.getElementById('subdomain').innerHTML =
-                `<a href="https://${sub}" target="_blank" style="color: #0ff; font-weight: bold;" class="subdomain-link">${sub}</a>`;
-              document.getElementById("status").innerHTML =
-                `Updated subdomain, <h2 style="color:red;">BOOKMARK IT, YOU WILL NOT BE ABLE TO SEE THIS AGAIN</h2>`;
-            } else {
-              document.getElementById("status").textContent = "Unexpected response format.";
-            }
-          } else {
-            document.getElementById("status").textContent = data;
-          }
-        })
-        .catch((error) => {
-          document.getElementById("status").textContent = `Error sending request! ${error}`;
-          console.error("Error:", error);
-        });
+    })
+    .catch((error) => {
+      document.getElementById("status").textContent = `Error sending request! ${error}`;
+      console.error("Error:", error);
     });
-  </script>
+});
+    </script>
 </body>
 </html>
