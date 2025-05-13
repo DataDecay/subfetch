@@ -10,112 +10,114 @@
   <meta property="og:type" content="website">
   <title>Request a thing</title>
   <style>
-  body {
-    background: #000;
-    color: #0f0;
-    font-family: monospace;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-  }
+body {
+  background: #000;
+  color: #0f0;
+  font-family: monospace;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: block;
+  justify-content: center;
+}
+
+h1, h2 {
+  margin-top: 1em;
+  color: #0f0;
+  font-size: 2em;
+}
+
+.subdomain {
+  font-size: 2em;
+  margin-top: 1em;
+  color: #0f0;
+  word-wrap: break-word;
+}
+
+.status {
+  font-size: 0.8em;
+  margin-bottom: 1em;
+  color: #6f6;
+}
+
+input[type="password"], select, button {
+  padding: 12px;
+  font-size: 1em;
+  margin-top: 1em;
+  font-family: monospace;
+  background-color: #111;
+  color: #0f0;
+  border: 1px solid #0f0;
+  border-radius: 5px;
+  width: 300px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #0f0;
+  color: #000;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-top: 1em;
+}
+
+button:hover {
+  background-color: #9f9;
+}
+
+select:focus, input[type="password"]:focus, button:focus {
+  outline: none;
+  border-color: #6f6;
+  box-shadow: 0 0 5px #6f6;
+}
+
+a.subdomain-link {
+  color: #0f0;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+label {
+  font-size: 1em;
+  color: #0f0;
+  margin-top: 1em;
+}
+
+p {
+  font-size: 1em;
+  color: #0f0;
+  margin-top: 1em;
+  max-width: 600px;
+  line-height: 1.5;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+span {
+  font-weight: bold;
+}
+
+/* For smaller screens */
+@media (max-width: 600px) {
   h1, h2 {
-    margin-top: 1em;
-    color: #0f0;
-    font-size: 2em;
+    font-size: 1.5em;
   }
 
   .subdomain {
-    font-size: 2em;
-    margin-top: 1em;
-    color: #0f0;
-    word-wrap: break-word;
-  }
-
-  .status {
-    font-size: 0.8em;
-    margin-bottom: 1em;
-    color: #6f6;
+    font-size: 1.5em;
   }
 
   input[type="password"], select, button {
-    padding: 12px;
-    font-size: 1em;
-    margin-top: 1em;
-    font-family: monospace;
-    background-color: #111;
-    color: #0f0;
-    border: 1px solid #0f0;
-    border-radius: 5px;
-    width: 300px;
-    box-sizing: border-box;
-  }
-
-  button {
-    background-color: #0f0;
-    color: #000;
-    font-size: 1.2em;
-    cursor: pointer;
-    margin-top: 1em;
-  }
-
-  button:hover {
-    background-color: #9f9;
-  }
-
-  select:focus, input[type="password"]:focus, button:focus {
-    outline: none;
-    border-color: #6f6;
-    box-shadow: 0 0 5px #6f6;
-  }
-
-  a.subdomain-link {
-    color: #0f0;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  label {
-    font-size: 1em;
-    color: #0f0;
-    margin-top: 1em;
+    width: 80%;
   }
 
   p {
-    font-size: 1em;
-    color: #0f0;
+    font-size: 0.9em;
     margin-top: 1em;
-    max-width: 600px;
-    line-height: 1.5;
   }
+}
 
-  span {
-    font-weight: bold;
-  }
-
-  /* For smaller screens */
-  @media (max-width: 600px) {
-    h1, h2 {
-      font-size: 1.5em;
-    }
-
-    .subdomain {
-      font-size: 1.5em;
-    }
-
-    input[type="password"], select, button {
-      width: 80%;
-    }
-
-    p {
-      font-size: 0.9em;
-      margin-top: 1em;
-    }
-  }
 </style>
 
 </head>
