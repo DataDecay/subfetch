@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta charset="UTF-8">
   <meta property="og:title" content="Requester by DataDecay">
   <meta property="og:description" content="Running out of links? Generate some yourself!">
@@ -11,130 +10,152 @@
   <meta property="og:type" content="website">
   <title>Request a thing</title>
   <style>
-    body {
-      background: #000;
-      color: #0f0;
-      font-family: monospace;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-    }
-    .subdomain {
-      font-size: 2em;
-      margin-top: 1em;
-      color: #0f0;
-    }
-    .status {
-      font-size: 1.2em;
-      margin-top: 1em;
-      color: #6f6;
-    }
-    input[type="password"] {
-      padding: 10px;
-      font-size: 1em;
-      margin-top: 1em;
-      border: 1px solid #0f0;
-        font-family: monospace;
-      border-radius: 5px;
-      background-color: #111;
-      color: #0f0;
-    }
-    button {
-      padding: 10px 20px;
-      margin-top: 1em;
-      background-color: #0f0;
-      border: none;
-      color: #000;
-      font-size: 1.2em;
-      cursor: pointer;
+  body {
+    background: #000;
+    color: #0f0;
     font-family: monospace;
-      border-radius: 5px;
-    }
-    button:hover {
-      background-color: #9f9;
-    }
-    a.subdomain-link {
-      color: #0f0;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    select {
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  h1, h2 {
     margin-top: 1em;
+    color: #0f0;
+    font-size: 2em;
+  }
+
+  .subdomain {
+    font-size: 2em;
+    margin-top: 1em;
+    color: #0f0;
+    word-wrap: break-word;
+  }
+
+  .status {
+    font-size: 0.8em;
+    margin-bottom: 1em;
+    color: #6f6;
+  }
+
+  input[type="password"], select, button {
+    padding: 12px;
     font-size: 1em;
+    margin-top: 1em;
     font-family: monospace;
     background-color: #111;
     color: #0f0;
     border: 1px solid #0f0;
     border-radius: 5px;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    width: 300px;
+    box-sizing: border-box;
   }
 
-  select:focus {
+  button {
+    background-color: #0f0;
+    color: #000;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 1em;
+  }
+
+  button:hover {
+    background-color: #9f9;
+  }
+
+  select:focus, input[type="password"]:focus, button:focus {
     outline: none;
     border-color: #6f6;
     box-shadow: 0 0 5px #6f6;
   }
 
+  a.subdomain-link {
+    color: #0f0;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
   label {
-    margin-top: 1em;
     font-size: 1em;
     color: #0f0;
+    margin-top: 1em;
   }
-  </style>
+
+  p {
+    font-size: 1em;
+    color: #0f0;
+    margin-top: 1em;
+    max-width: 600px;
+    line-height: 1.5;
+  }
+
+  span {
+    font-weight: bold;
+  }
+
+  /* For smaller screens */
+  @media (max-width: 600px) {
+    h1, h2 {
+      font-size: 1.5em;
+    }
+
+    .subdomain {
+      font-size: 1.5em;
+    }
+
+    input[type="password"], select, button {
+      width: 80%;
+    }
+
+    p {
+      font-size: 0.9em;
+      margin-top: 1em;
+    }
+  }
+</style>
+
 </head>
 <body>
-  <h1>Link:</h1>
+  <h1>Request Stuff</h1>
+  <h3><div class="status" id="randomMessage"></div></h3>
+  <h2>Rotating Link:</h2>
   <div class="subdomain" id="subdomain">Loading…</div>
-  <p>This changes every week; progress will not save when it rotates. To get a perm link; enter the password and <span style="color:red;">DO NOT SHARE YOUR PERM LINK</span>.
-  <br />You can share this site though. These are to prevent the blocking of the site/your link. Once you are here; try to visit it not very much to ensure they don't see this site as active. Password is "secrettoken". <br />
-  <br /><span style="color: lime; font-weight: bold;">Rolling link uses Tinf0il (no ads)</span>
-<details style="color: red; font-weight: bold;">
-  <summary>All the new domains I added are going to be blocked until May 13, around 3:30AM. Thanks to CISCO Umbrella NSD filter :/</summary>
-  <span style="font-weight: normal; color: #00ff00;">
-  Affected domains:
-  <ul>
-    <li>billisbetterthannevin.vip</li>
-    <li>datadecayrocks.men</li>
-    <li>iamsteve.fyi</li>
-    <li>ultratippy.top</li>
-    <li>wowinator.cloud</li>
-  </ul>
-  </span>
-</details></p>
+  <p>This changes every week; progress will not save when it rotates. To get a perm link, enter the password and <span style="color:red;">DO NOT SHARE YOUR PERM LINK</span>.
+    <br />You can share this site though. These are to prevent the blocking of the site/your link. Once you are here; try to visit it not very much to ensure they don't see this site as active. Password is "secrettoken". <br />
+    <br /><span style="color: lime;">Rolling link uses Tinf0il (no ads)</span><br />
+  </p>
 
   <h2>Request Non-Rotating:</h2>
   <input type="password" id="passwordInput" placeholder="Enter the password">
   <label for="proxyType">Type:</label>
-<select id="proxyType">
-  <option value="tf">Tinf0il</option>
-  <option value="cl">Canlite</option>
+  <select id="proxyType">
+    <option value="tf">Tinf0il</option>
+    <option value="cl">Canlite</option>
     <option value="mc">Doge v4</option>
     <option value="nb">Nebula</option>
     <option value="py">Pyrus</option>
     <option value="is">Interstellar</option>
     <option value="an">Anura (entire virtual computer) {this uses up way too much of my ram}</option>
     <option value="hb">Holy Unblocker (advanced) (tor support)</option>
-</select>
-
+  </select>
   <button id="sendRequestButton">Request</button>
-
   <div class="status" id="status"></div>
-    <p>If y'all could donate, that would help a lot with the domain fees and server costs.</p>
-<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-<script>
-  kofiWidgetOverlay.draw('datadecayyay', {
-    'type': 'floating-chat',
-    'floating-chat.donateButton.text': 'Donate',
-    'floating-chat.donateButton.background-color': '#00ff00',
-    'floating-chat.donateButton.text-color': '#000'
-  });
-</script>
+  <p>If y'all could donate, that would help a lot with the domain fees and server costs.</p>
+
+  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+  <script>
+    kofiWidgetOverlay.draw('datadecayyay', {
+      'type': 'floating-chat',
+      'floating-chat.donateButton.text': 'Donate',
+      'floating-chat.donateButton.background-color': '#00ff00',
+      'floating-chat.donateButton.text-color': '#000'
+    });
+  </script>
+
   <script>
     fetch("https://api.datadecay.dev/hooks/show-subdomain")
       .then(r => r.json())
@@ -146,7 +167,6 @@
         } else {
           document.getElementById('subdomain').textContent = subdomain;
         }
-
         window.subdomain = subdomain;
       })
       .catch((e) => {
@@ -154,39 +174,66 @@
       });
 
     document.getElementById("sendRequestButton").addEventListener("click", () => {
-  const password = document.getElementById("passwordInput").value;
-  const proxy = document.getElementById("proxyType").value;
+      const password = document.getElementById("passwordInput").value;
+      const proxy = document.getElementById("proxyType").value;
 
-  if (!password) {
-    document.getElementById("status").textContent = "Please enter a password.";
-    return;
-  }
-
-  fetch(`https://api.datadecay.dev/hooks/yummy-cheese?token=${encodeURIComponent(password)}&proxy=${encodeURIComponent(proxy)}`)
-    .then(response => response.text())
-    .then(data => {
-      if (data.includes("satisfied")) {
-        document.getElementById("status").textContent = "Incorrect password.";
-      } else if (data.includes("Subdomain")) {
-        const responseSubdomain = data.match(/Subdomain (.*?) added/);
-        if (responseSubdomain && responseSubdomain[1]) {
-          const sub = responseSubdomain[1];
-          document.getElementById('subdomain').innerHTML =
-            `<a href="https://${sub}" target="_blank" style="color: #0ff; font-weight: bold;" class="subdomain-link">${sub}</a>`;
-          document.getElementById("status").innerHTML =
-            `Updated subdomain, <h2 style="color:red;">BOOKMARK IT, YOU WILL NOT BE ABLE TO SEE THIS AGAIN</h2>`;
-        } else {
-          document.getElementById("status").textContent = "Unexpected response format.";
-        }
-      } else {
-        document.getElementById("status").textContent = data;
+      if (!password) {
+        document.getElementById("status").textContent = "Please enter a password.";
+        return;
       }
-    })
-    .catch((error) => {
-      document.getElementById("status").textContent = `Error sending request! ${error}`;
-      console.error("Error:", error);
+
+      fetch(`https://api.datadecay.dev/hooks/yummy-cheese?token=${encodeURIComponent(password)}&proxy=${encodeURIComponent(proxy)}`)
+        .then(response => response.text())
+        .then(data => {
+          if (data.includes("satisfied")) {
+            document.getElementById("status").textContent = "Incorrect password.";
+          } else if (data.includes("Subdomain")) {
+            const responseSubdomain = data.match(/Subdomain (.*?) added/);
+            if (responseSubdomain && responseSubdomain[1]) {
+              const sub = responseSubdomain[1];
+              document.getElementById('subdomain').innerHTML =
+                `<a href="https://${sub}" target="_blank" style="color: #0ff; font-weight: bold;" class="subdomain-link">${sub}</a>`;
+              document.getElementById("status").innerHTML =
+                `Updated subdomain, <h2 style="color:red;">BOOKMARK IT, YOU WILL NOT BE ABLE TO SEE THIS AGAIN</h2>`;
+            } else {
+              document.getElementById("status").textContent = "Unexpected response format.";
+            }
+          } else {
+            document.getElementById("status").textContent = data;
+          }
+        })
+        .catch((error) => {
+          document.getElementById("status").textContent = `Error sending request! ${error}`;
+          console.error("Error:", error);
+        });
     });
-});
-    </script>
+  </script>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const messages = [
+        ":3", "hello there kind stranger", "ples donate", "you found the secret line!", "beep boop i am a link bot",
+        "made with caffeine and duct tape", "rotating faster than your fridge light", "if it breaks, it’s your fault",
+        "404: message not found", "powered by Jailbroken Kindle™ (amazon please dont sue me in my sleep)",
+        "now with extra stealth sauce", "please dont bookmark :D", "powered by spaghetti code™", "OwO",
+        "one link a day keeps the filters away", "this is not a phishing site (trust)", "link juice freshly squeezed",
+        "stealth mode: ON", "Super Duper Slow Mode <em>ACTIVATED</em>", "made with HTML, CSS, JS, and raw determination",
+        "free range, grass-fed subdomains", "your IP is safe… probably", "trust me bro certified™", "we do a little rotating",
+    "404: Not Found, but still here", "powered by leftover pizza", "beep boop, I'm on a coffee break", 
+    "warning: contains 100% sarcasm", "don’t make me bring out the angry cat gifs", "insert witty message here",
+    "if this site crashes, blame the server hamster", "still loading... or am I?", "turning coffee into code since forever", 
+    "data may or may not be accurate", "totally not a bot (maybe)", "this is why we can't have nice things",
+    "we've got more bugs than a summer picnic", "not your average website", "this page may or may not be haunted",
+    "eating up your bandwidth one click at a time", "don't panic, everything’s fine",
+    "certified to be 90% functional", "not responsible for any lost productivity", "you are the 404th visitor today",
+    "everything is fine... probably", "this site runs on 3 parts coffee, 2 parts chaos", "we prefer waffles over pancakes",
+    "now serving 99% nonsense", "not affiliated with the Illuminati, probably","Here to decay your data, one bit at a time", "loading... just kidding, I’m already here",
+        "click responsibly", "please dont watch corn on the cornhub using this... I can see :<", "this site brought to you by insomnia"
+      ];
+
+      const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById("randomMessage").innerHTML = randomMessage;
+    });
+  </script>
 </body>
 </html>
