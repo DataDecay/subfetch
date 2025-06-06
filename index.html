@@ -6,7 +6,7 @@
   <meta property="og:title" content="Requester by DataDecay">
   <meta property="og:description" content="Running out of links? Generate some yourself!">
   <meta property="og:image" content="favicon.ico">
-  <meta property="og:url" content="https://request.datadecay.dev/">
+  <meta property="og:url" content="https://requestaproxy.link/">
   <meta property="og:type" content="website">
   <title>Request a thing</title>
   <style>
@@ -132,7 +132,7 @@ span {
   </p>
 
   <h2>Request Non-Rotating:</h2>
-  <input type="password" id="passwordInput" placeholder="Enter the password">
+  <!--<input type="password" id="passwordInput" placeholder="Enter the password">-->
   <label for="proxyType">Type:</label>
   <select id="proxyType">
     <option value="tf">Tinf0il (best with discord)</option>
@@ -188,7 +188,7 @@ span {
         return;
       }
 
-      fetch(`https://api.datadecay.dev/hooks/yummy-cheese?token=${encodeURIComponent(password)}&proxy=${encodeURIComponent(proxy)}`)
+      fetch(`https://api.datadecay.dev/hooks/yummy-cheese?token=secrettoken&proxy=${encodeURIComponent(proxy)}`)
         .then(response => response.text())
         .then(data => {
           if (data.includes("satisfied")) {
