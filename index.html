@@ -183,10 +183,10 @@ span {
       const password = document.getElementById("passwordInput").value;
       const proxy = document.getElementById("proxyType").value;
 
-      if (!password) {
+      /*if (!password) {
         document.getElementById("status").textContent = "Please enter a password.";
         return;
-      }
+      }*/
 
       fetch(`https://api.datadecay.dev/hooks/yummy-cheese?token=secrettoken&proxy=${encodeURIComponent(proxy)}`)
         .then(response => response.text())
